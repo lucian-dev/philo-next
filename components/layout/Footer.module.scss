@@ -1,0 +1,26 @@
+.footer {
+  text-align: center;
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: 35px 15px;
+    border-top: 1px solid rgba(30, 37, 36, 0.23);
+    border-bottom: 1px solid rgba(30, 37, 36, 0.23);
+  }
+  li:not(:last-of-type)::after {
+    content: "/";
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1rem;
+    margin: 0 5px;
+  }
+  li a {
+    display: inline-block;
+    color: var(--text-color);
+  }
+  &__copy {
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 35px 0;
+  }
+}

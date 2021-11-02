@@ -1,0 +1,100 @@
+.header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  transition: all 0.3s ease-in-out;
+  &__sticky {
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    padding: 0 20px;
+  }
+  &__wrapper {
+    width: 100%;
+    max-width: 1680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    &__sticky {
+      padding: 15px 5px;
+    }
+  }
+  &__logo {
+    flex: 2;
+    h1 {
+      line-height: 1;
+      font-weight: 900;
+      color: var(--text-color);
+      span {
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+  &__nav {
+    flex: 1;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    li {
+      padding: 0 15px;
+    }
+    a {
+      position: relative;
+      display: inline-block;
+      font-size: 1.4rem;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--text-color);
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid var(--text-color-secondary);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+      }
+      &:hover,
+      &.activeLink {
+        &::after {
+          transform-origin: left;
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+  &__actions {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    button,
+    div {
+      margin: 0 10px;
+    }
+    svg {
+      fill: var(--text-color-secondary);
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    span {
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--text-color-secondary);
+    }
+  }
+}

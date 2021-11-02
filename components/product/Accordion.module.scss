@@ -1,0 +1,46 @@
+.accordion {
+  position: relative;
+  border-bottom: 1px solid rgba(30, 37, 36, 0.23);
+  &:first-of-type {
+    border-top: 1px solid rgba(30, 37, 36, 0.23);
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 25px 0;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--text-color-secondary);
+    transition: all 0.3s ease-in-out;
+    &::after {
+      content: "\002B";
+      color: var(--text-color-secondary);
+      transition: all 0.3s ease-in-out;
+    }
+    &:hover,
+    &_open {
+      color: var(--text-color);
+    }
+    &_open {
+      &::after {
+        content: "\2212";
+        color: var(--text-color);
+      }
+    }
+  }
+  &__item {
+    overflow: hidden;
+    height: auto;
+    max-height: 750px;
+    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+    &_collapsed {
+      max-height: 0;
+      transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+    }
+  }
+  &__content {
+    padding: 0 15px 25px;
+  }
+}
