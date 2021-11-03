@@ -1,16 +1,8 @@
 import styles from "./ProductCard.module.scss";
 import Link from "next/link";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { useContext } from "react";
-import { WishlistContext } from "context/Wishlist";
+import FavoriteButton from "./FavoriteButton";
 
 const ProductCard = ({ product }) => {
-  const { addProductToWishlist, removeProductFromWishlist, wishlist } =
-    useContext(WishlistContext);
-  let storedProduct = wishlist.find((o) => o.id === product.id);
-
-  const wishlistDisabled = storedProduct ? true : false;
-
   return (
     <div className={styles.productCard}>
       <Link href={`/${product.slug}`}>
@@ -38,22 +30,7 @@ const ProductCard = ({ product }) => {
           </div>
         </a>
       </Link>
-      {wishlistDisabled ? (
-        <button
-          className={styles.productCard__favorite}
-          onClick={() => removeProductFromWishlist(product.id)}
-        >
-          {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
-        </button>
-      ) : (
-        <button
-          className={styles.productCard__favorite}
-          disabled={wishlistDisabled}
-          onClick={() => addProductToWishlist(product)}
-        >
-          {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
-        </button>
-      )}
+      <FavoriteButton product={product} />
     </div>
   );
 };

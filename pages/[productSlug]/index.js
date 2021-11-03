@@ -1,8 +1,6 @@
 import styles from "./Product.module.scss";
 import { fetchQuery } from "@utils/fetcher";
-import { useState, useEffect, useContext } from "react";
-import { WishlistContext } from "context/Wishlist";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useState, useEffect } from "react";
 import {
   TiSocialFacebook,
   TiSocialPinterest,
@@ -14,6 +12,7 @@ import {
   PinterestShareButton,
   TwitterShareButton,
 } from "react-share";
+import FavoriteButton from "@components/product/FavoriteButton";
 import PopupSize from "@components/product/PopupSize";
 import Accordion from "@components/product/Accordion";
 import Related from "@components/product/Related";
@@ -23,14 +22,8 @@ export default function Product({ product, categories }) {
   const [sizes, setSizes] = useState();
   const [colors, setColors] = useState("Black");
 
-  const { addProductToWishlist, removeProductFromWishlist, wishlist } =
-    useContext(WishlistContext);
-  let storedProduct = wishlist.find((o) => o.id === product.id);
-
-  const wishlistDisabled = storedProduct ? true : false;
-
   let thumbnailImage = images.slice(0, 1).map(({ original }) => original);
-  let shareUrl = `http://localhost:3000/products/${product.slug}`;
+  let shareUrl = `http://localhost:3000/${product.slug}`;
 
   useEffect(() => {
     let imagesBlack = [];
@@ -84,22 +77,7 @@ export default function Product({ product, categories }) {
         <h1>{product.name}</h1>
       </div>
       <div className={styles.product__details}>
-        {wishlistDisabled ? (
-          <button
-            className={styles.product__favorite}
-            onClick={() => removeProductFromWishlist(product.id)}
-          >
-            {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
-          </button>
-        ) : (
-          <button
-            className={styles.product__favorite}
-            disabled={wishlistDisabled}
-            onClick={() => addProductToWishlist(product)}
-          >
-            {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
-          </button>
-        )}
+        <FavoriteButton product={product} />
         <ImageGallery
           items={images}
           showThumbnails={false}
