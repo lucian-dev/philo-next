@@ -1,0 +1,12 @@
+.quote {
+  margin: 75px 0 25px;
+  color: var(--text-color);
+  q {
+    display: block;
+    font-size: clamp(4.5rem, 5.5vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,10 @@
+.sizes {
+  span {
+    color: var(--text-color-secondary);
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+}

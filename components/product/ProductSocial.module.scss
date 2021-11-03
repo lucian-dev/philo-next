@@ -1,0 +1,16 @@
+.social {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  color: var(--text-color-secondary);
+  svg {
+    width: 25px;
+    height: 25px;
+    display: block;
+    fill: var(--text-color-secondary);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      fill: var(--text-color);
+    }
+  }
+}

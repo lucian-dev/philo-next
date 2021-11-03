@@ -1,24 +1,18 @@
 import styles from "./Product.module.scss";
 import { fetchQuery } from "@utils/fetcher";
 import { useState, useEffect } from "react";
-import {
-  TiSocialFacebook,
-  TiSocialPinterest,
-  TiSocialTwitter,
-} from "react-icons/ti";
-import ImageGallery from "react-image-gallery";
-import {
-  FacebookShareButton,
-  PinterestShareButton,
-  TwitterShareButton,
-} from "react-share";
 import FavoriteButton from "@components/product/FavoriteButton";
+import ProductGallery from "@components/product/ProductGallery";
 import PopupSize from "@components/product/PopupSize";
+import ProductSizes from "@components/product/ProductSizes";
+import ProductColors from "@components/product/ProductColors";
+import ProductActions from "@components/product/ProductActions";
+import ProductSocial from "@components/product/ProductSocial";
 import Accordion from "@components/product/Accordion";
+import ProductQuote from "@components/product/ProductQuote";
 import Related from "@components/product/Related";
 
 export default function Product({ product, categories }) {
-  console.log(product);
   const [images, setImages] = useState([]);
   const [productSize, setProductSize] = useState();
   const [productColor, setProductColor] = useState("Black");
@@ -79,16 +73,7 @@ export default function Product({ product, categories }) {
       </div>
       <div className={styles.product__details}>
         <FavoriteButton product={product} />
-        <ImageGallery
-          items={images}
-          showThumbnails={false}
-          showNav={true}
-          showPlayButton={false}
-          lazyLoad={true}
-          useBrowserFullscreen={false}
-          disableSwipe={false}
-          additionalClass={styles.product__gallery}
-        />
+        <ProductGallery images={images} />
         <div className={styles.product__info}>
           <div className={styles.product__meta}>
             <div className={styles.product__material}>
@@ -99,91 +84,33 @@ export default function Product({ product, categories }) {
             </div>
           </div>
           <div className={styles.product__options}>
-            <div className={styles.product__sizes}>
-              <span>Choose Size</span>
-              <div className={styles.product__sizes_actions}>
-                {product.sizes.map((size, id) => {
-                  const sizeActive = size.name === productSize;
-                  return (
-                    <button
-                      key={id}
-                      value={size.name}
-                      className={`btn btn--sizes ${
-                        sizeActive ? "sizeSelected" : ""
-                      }`}
-                      onClick={handleSizeChange}
-                    >
-                      {size.name}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.product__colors}>
-              <span>Choose Color</span>
-              <div className={styles.product__colors_actions}>
-                {product.colors.map((color, id) => {
-                  const colorActive = color.name === productColor;
-                  return (
-                    <button
-                      key={id}
-                      value={color.name}
-                      className={`btn btn--colors btn--colors_${color.name.toLowerCase()} ${
-                        colorActive ? "colorSelected" : ""
-                      }`}
-                      onClick={handleColorChange}
-                    ></button>
-                  );
-                })}
-              </div>
-            </div>
+            <ProductSizes
+              product={product}
+              productSize={productSize}
+              sizeChange={handleSizeChange}
+            />
+            <ProductColors
+              product={product}
+              productColor={productColor}
+              colorChange={handleColorChange}
+            />
           </div>
-          <div className={styles.product__actions}>
-            <div className={styles.product__price}>
-              {product.price}
-              <i>$</i>
-              <span>Tax included</span>
-            </div>
-            <button
-              className="snipcart-add-item btn btn--add-to-cart"
-              data-item-id={product.slug}
-              data-item-price={product.price}
-              data-item-url="/"
-              data-item-description=""
-              data-item-image={thumbnailImage}
-              data-item-name={product.name}
-              data-item-custom1-name={productSize ? "Size" : "Choose Size*"}
-              data-item-custom1-type="readonly"
-              data-item-custom1-value={productSize}
-              data-item-custom2-name={productColor ? "Color" : "Choose Color*"}
-              data-item-custom2-type="readonly"
-              data-item-custom2-value={productColor}
-              disabled={!productSize ? true : false}
-            >
-              {productSize ? "Add to cart" : "Select size"}
-            </button>
-          </div>
-          <div className={styles.product__social}>
-            <span>Share:</span>
-            <FacebookShareButton url={shareUrl} hashtag={"philo-sophia"}>
-              <TiSocialFacebook />
-            </FacebookShareButton>
-            <PinterestShareButton url={shareUrl} media={thumbnailImage}>
-              <TiSocialPinterest />
-            </PinterestShareButton>
-            <TwitterShareButton
-              url={shareUrl}
-              title={product.name}
-              hashtags={["philo-sophia", `${product.name}`]}
-            >
-              <TiSocialTwitter />
-            </TwitterShareButton>
-          </div>
+          <ProductActions
+            product={product}
+            thumbnailImage={thumbnailImage}
+            productSize={productSize}
+            productColor={productColor}
+          />
+          <ProductSocial
+            shareUrl={shareUrl}
+            thumbnailImage={thumbnailImage}
+            productTitle={product.name}
+          />
         </div>
-        <div className={styles.product__quote}>
-          <q>{product.headline}</q>
-          <p>{product.description}</p>
-        </div>
+        <ProductQuote
+          quote={product.headline}
+          description={product.description}
+        />
         <div className={styles.product__accordion_wrapper}>
           {product.tabs.map((tab) => {
             return (
