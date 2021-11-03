@@ -3,7 +3,7 @@ import { fetchQuery } from "@utils/fetcher";
 import { useState, useEffect } from "react";
 import FavoriteButton from "@components/product/FavoriteButton";
 import ProductGallery from "@components/product/ProductGallery";
-import PopupSize from "@components/product/PopupSize";
+import ProductMeta from "@components/product/ProductMeta";
 import ProductSizes from "@components/product/ProductSizes";
 import ProductColors from "@components/product/ProductColors";
 import ProductActions from "@components/product/ProductActions";
@@ -75,14 +75,7 @@ export default function Product({ product, categories }) {
         <FavoriteButton product={product} />
         <ProductGallery images={images} />
         <div className={styles.product__info}>
-          <div className={styles.product__meta}>
-            <div className={styles.product__material}>
-              Regular fit / Organic Cotton
-            </div>
-            <div className={styles.product__guides}>
-              <PopupSize />
-            </div>
-          </div>
+          <ProductMeta />
           <div className={styles.product__options}>
             <ProductSizes
               product={product}
