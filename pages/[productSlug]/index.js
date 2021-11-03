@@ -18,9 +18,10 @@ import Accordion from "@components/product/Accordion";
 import Related from "@components/product/Related";
 
 export default function Product({ product, categories }) {
+  console.log(product);
   const [images, setImages] = useState([]);
-  const [sizes, setSizes] = useState();
-  const [colors, setColors] = useState("Black");
+  const [productSize, setProductSize] = useState();
+  const [productColor, setProductColor] = useState("Black");
 
   let thumbnailImage = images.slice(0, 1).map(({ original }) => original);
   let shareUrl = `http://localhost:3000/${product.slug}`;
@@ -28,7 +29,7 @@ export default function Product({ product, categories }) {
   useEffect(() => {
     let imagesBlack = [];
     let imagesWhite = [];
-    if (colors === "Black") {
+    if (productColor === "Black") {
       product.colors.slice(0, 1).map((item, id) => (
         <div key={id}>
           {item.gallery.map((image) => {
@@ -42,7 +43,7 @@ export default function Product({ product, categories }) {
         </div>
       ));
       setImages(imagesBlack);
-    } else if (colors === "White") {
+    } else if (productColor === "White") {
       product.colors.slice(1, 2).map((item, id) => (
         <div key={id}>
           {item.gallery.map((image) => {
@@ -57,18 +58,18 @@ export default function Product({ product, categories }) {
       ));
       setImages(imagesWhite);
     }
-  }, [colors]);
+  }, [productColor]);
 
   function handleSizeChange(e) {
     e.preventDefault();
     const sizeValue = e.currentTarget.value;
-    setSizes(sizeValue);
+    setProductSize(sizeValue);
   }
 
   function handleColorChange(e) {
     e.preventDefault();
     const colorValue = e.currentTarget.value;
-    setColors(colorValue);
+    setProductColor(colorValue);
   }
 
   return (
@@ -102,7 +103,7 @@ export default function Product({ product, categories }) {
               <span>Choose Size</span>
               <div className={styles.product__sizes_actions}>
                 {product.sizes.map((size, id) => {
-                  const sizeActive = size.name === sizes;
+                  const sizeActive = size.name === productSize;
                   return (
                     <button
                       key={id}
@@ -122,7 +123,7 @@ export default function Product({ product, categories }) {
               <span>Choose Color</span>
               <div className={styles.product__colors_actions}>
                 {product.colors.map((color, id) => {
-                  const colorActive = color.name === colors;
+                  const colorActive = color.name === productColor;
                   return (
                     <button
                       key={id}
@@ -151,15 +152,15 @@ export default function Product({ product, categories }) {
               data-item-description=""
               data-item-image={thumbnailImage}
               data-item-name={product.name}
-              data-item-custom1-name={sizes ? "Size" : "Choose Size*"}
+              data-item-custom1-name={productSize ? "Size" : "Choose Size*"}
               data-item-custom1-type="readonly"
-              data-item-custom1-value={sizes}
-              data-item-custom2-name={colors ? "Color" : "Choose Color*"}
+              data-item-custom1-value={productSize}
+              data-item-custom2-name={productColor ? "Color" : "Choose Color*"}
               data-item-custom2-type="readonly"
-              data-item-custom2-value={colors}
-              disabled={!sizes ? true : false}
+              data-item-custom2-value={productColor}
+              disabled={!productSize ? true : false}
             >
-              {sizes ? "Add to cart" : "Select size"}
+              {productSize ? "Add to cart" : "Select size"}
             </button>
           </div>
           <div className={styles.product__social}>
