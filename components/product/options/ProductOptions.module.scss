@@ -1,0 +1,23 @@
+.productOptions {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0;
+  border-top: 1px solid rgba(30, 37, 36, 0.23);
+  border-bottom: 1px solid rgba(30, 37, 36, 0.23);
+  &__sizes,
+  &__colors {
+    span {
+      color: var(--text-color-secondary);
+    }
+    &_actions {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+  }
+  &__colors {
+    &_actions {
+      justify-content: flex-end;
+    }
+  }
+}

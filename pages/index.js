@@ -3,7 +3,7 @@ import { fetchQuery } from "@utils/fetcher";
 import { useState } from "react";
 import Fuse from "fuse.js";
 import SearchInput from "@components/searchinput/SearchInput";
-import ProductCard from "@components/product/ProductCard";
+import ProductCard from "@components/product/card/ProductCard";
 
 export default function Home({ tshirts, categories, quotes }) {
   const [activeCategory, setActiveCategory] = useState();

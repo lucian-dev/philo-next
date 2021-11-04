@@ -1,10 +1,10 @@
-import styles from "./ProductSizes.module.scss";
+import styles from "./ProductOptions.module.scss";
 
 const ProductSizes = ({ product, productSize, sizeChange }) => {
   return (
-    <div className={styles.sizes}>
+    <div className={styles.productOptions__sizes}>
       <span>Choose Size</span>
-      <div className={styles.sizes__actions}>
+      <div className={styles.productOptions__sizes_actions}>
         {product.sizes.map((size, id) => {
           const sizeActive = size.name === productSize;
           return (

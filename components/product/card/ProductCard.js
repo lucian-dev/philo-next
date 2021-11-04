@@ -1,6 +1,6 @@
 import styles from "./ProductCard.module.scss";
 import Link from "next/link";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "../favorite/FavoriteButton";
 
 const ProductCard = ({ product }) => {
   return (

@@ -1,7 +1,7 @@
 import styles from "./Related.module.scss";
 import { AiOutlineRollback } from "react-icons/ai";
 import Link from "next/link";
-import ProductCard from "./ProductCard";
+import ProductCard from "../card/ProductCard";
 
 const Related = ({ categories, product }) => {
   const currentCategory = product.categories[0].name;

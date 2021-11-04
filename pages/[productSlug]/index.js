@@ -1,16 +1,16 @@
 import styles from "./Product.module.scss";
 import { fetchQuery } from "@utils/fetcher";
 import { useState, useEffect } from "react";
-import FavoriteButton from "@components/product/FavoriteButton";
-import ProductGallery from "@components/product/ProductGallery";
-import ProductMeta from "@components/product/ProductMeta";
-import ProductSizes from "@components/product/ProductSizes";
-import ProductColors from "@components/product/ProductColors";
-import ProductActions from "@components/product/ProductActions";
-import ProductSocial from "@components/product/ProductSocial";
-import Accordion from "@components/product/Accordion";
-import ProductQuote from "@components/product/ProductQuote";
-import Related from "@components/product/Related";
+import ProductHeader from "@components/product/header/ProductHeader";
+import FavoriteButton from "@components/product/favorite/FavoriteButton";
+import ProductGallery from "@components/product/gallery/ProductGallery";
+import ProductMeta from "@components/product/meta/ProductMeta";
+import ProductOptions from "@components/product/options/ProductOptions";
+import ProductActions from "@components/product/actions/ProductActions";
+import ProductSocial from "@components/product/social/ProductSocial";
+import Accordion from "@components/product/accordion/Accordion";
+import ProductQuote from "@components/product/quote/ProductQuote";
+import Related from "@components/product/related/Related";
 
 export default function Product({ product, categories }) {
   const [images, setImages] = useState([]);
@@ -68,26 +68,19 @@ export default function Product({ product, categories }) {
 
   return (
     <div className={styles.product}>
-      <div className={styles.product__header}>
-        <h1>{product.name}</h1>
-      </div>
+      <ProductHeader productName={product.name} />
       <div className={styles.product__details}>
         <FavoriteButton product={product} />
         <ProductGallery images={images} />
         <div className={styles.product__info}>
           <ProductMeta />
-          <div className={styles.product__options}>
-            <ProductSizes
-              product={product}
-              productSize={productSize}
-              sizeChange={handleSizeChange}
-            />
-            <ProductColors
-              product={product}
-              productColor={productColor}
-              colorChange={handleColorChange}
-            />
-          </div>
+          <ProductOptions
+            product={product}
+            productSize={productSize}
+            productColor={productColor}
+            sizeChange={handleSizeChange}
+            colorChange={handleColorChange}
+          />
           <ProductActions
             product={product}
             thumbnailImage={thumbnailImage}
@@ -104,17 +97,7 @@ export default function Product({ product, categories }) {
           quote={product.headline}
           description={product.description}
         />
-        <div className={styles.product__accordion_wrapper}>
-          {product.tabs.map((tab) => {
-            return (
-              <Accordion
-                key={tab.id}
-                title={tab.name}
-                content={tab.description}
-              />
-            );
-          })}
-        </div>
+        <Accordion tabs={product.tabs} />
       </div>
       <Related categories={categories} product={product} />
     </div>

@@ -1,10 +1,10 @@
-import styles from "./ProductColors.module.scss";
+import styles from "./ProductOptions.module.scss";
 
 const ProductColors = ({ product, productColor, colorChange }) => {
   return (
-    <div className={styles.colors}>
+    <div className={styles.productOptions__colors}>
       <span>Choose Color</span>
-      <div className={styles.colors__actions}>
+      <div className={styles.productOptions__colors_actions}>
         {product.colors.map((color, id) => {
           const colorActive = color.name === productColor;
           return (

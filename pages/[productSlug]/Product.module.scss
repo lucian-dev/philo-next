@@ -1,15 +1,5 @@
 .product {
   margin-top: 35px;
-  &__header {
-    text-align: center;
-    h1 {
-      font-weight: 900;
-      font-size: clamp(5rem, 15vw, 15rem);
-      line-height: 1;
-      color: var(--text-color-secondary);
-      letter-spacing: -0.045em;
-    }
-  }
   &__details {
     position: relative;
     max-width: 600px;
@@ -17,12 +7,5 @@
   }
   &__info {
     margin-top: 25px;
-  }
-  &__options {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 0;
-    border-top: 1px solid rgba(30, 37, 36, 0.23);
-    border-bottom: 1px solid rgba(30, 37, 36, 0.23);
   }
 }

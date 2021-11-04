@@ -1,7 +1,7 @@
 import styles from "@styles/Favorites.module.scss";
 import { useContext } from "react";
 import { WishlistContext } from "context/Wishlist";
-import ProductCard from "@components/product/ProductCard";
+import ProductCard from "@components/product/card/ProductCard";
 
 export default function Favorites() {
   const { wishlist } = useContext(WishlistContext);
