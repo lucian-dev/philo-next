@@ -1,6 +1,6 @@
 import AccordionTab from "./AccordionTab";
 
-const Accordion = ({ tabs }) => {
+const ProductAccordion = ({ tabs }) => {
   return (
     <div>
       {tabs.map((tab) => {
@@ -16,4 +16,4 @@ const Accordion = ({ tabs }) => {
   );
 };
 
-export default Accordion;
+export default ProductAccordion;

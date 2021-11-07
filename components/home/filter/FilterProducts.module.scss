@@ -1,0 +1,19 @@
+.filterProducts {
+  display: flex;
+  align-items: center;
+  margin: 75px 0;
+  &__empty {
+    flex: 1;
+  }
+  ul {
+    display: flex;
+    flex: 3;
+    justify-content: center;
+  }
+  li {
+    padding: 0 25px;
+  }
+  &__search {
+    flex: 1;
+  }
+}

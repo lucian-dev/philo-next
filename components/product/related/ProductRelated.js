@@ -3,7 +3,7 @@ import { AiOutlineRollback } from "react-icons/ai";
 import Link from "next/link";
 import ProductCard from "../card/ProductCard";
 
-const Related = ({ categories, product }) => {
+const ProductRelated = ({ categories, product }) => {
   const currentCategory = product.categories[0].name;
   const currentProduct = product.name;
   return (
@@ -33,4 +33,4 @@ const Related = ({ categories, product }) => {
   );
 };
 
-export default Related;
+export default ProductRelated;

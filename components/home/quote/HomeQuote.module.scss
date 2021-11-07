@@ -1,0 +1,22 @@
+.quote {
+  max-width: 900px;
+  margin: 150px auto;
+  q {
+    font-size: 5rem;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--text-color);
+  }
+  span {
+    font-size: 2.2rem;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 2px;
+      background-color: var(--text-color);
+      vertical-align: middle;
+      margin: 0 12px;
+    }
+  }
+}

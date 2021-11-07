@@ -1,16 +1,18 @@
-import styles from "./Product.module.scss";
+import styles from "@components/product/Product.module.scss";
 import { fetchQuery } from "@utils/fetcher";
 import { useState, useEffect } from "react";
-import ProductHeader from "@components/product/header/ProductHeader";
-import FavoriteButton from "@components/product/favorite/FavoriteButton";
-import ProductGallery from "@components/product/gallery/ProductGallery";
-import ProductMeta from "@components/product/meta/ProductMeta";
-import ProductOptions from "@components/product/options/ProductOptions";
-import ProductActions from "@components/product/actions/ProductActions";
-import ProductSocial from "@components/product/social/ProductSocial";
-import Accordion from "@components/product/accordion/Accordion";
-import ProductQuote from "@components/product/quote/ProductQuote";
-import Related from "@components/product/related/Related";
+import {
+  ProductHeader,
+  FavoriteButton,
+  ProductGallery,
+  ProductMeta,
+  ProductOptions,
+  ProductActions,
+  ProductSocial,
+  ProductAccordion,
+  ProductQuote,
+  ProductRelated,
+} from "@components/product";
 
 export default function Product({ product, categories }) {
   const [images, setImages] = useState([]);
@@ -66,6 +68,16 @@ export default function Product({ product, categories }) {
     setProductColor(colorValue);
   }
 
+  // function addReviewHandler(reviewData) {
+  //   fetch(`http://localhost:1337/tshirts/${product.slug}/comments`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(reviewData),
+  //   });
+  // }
+
   return (
     <div className={styles.product}>
       <ProductHeader productName={product.name} />
@@ -97,9 +109,11 @@ export default function Product({ product, categories }) {
           quote={product.headline}
           description={product.description}
         />
-        <Accordion tabs={product.tabs} />
+        <ProductAccordion tabs={product.tabs} />
+        {/* <Reviews product={product} /> */}
+        {/* <NewReviewForm onAddReview={addReviewHandler} product={product} /> */}
       </div>
-      <Related categories={categories} product={product} />
+      <ProductRelated categories={categories} product={product} />
     </div>
   );
 }

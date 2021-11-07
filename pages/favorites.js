@@ -1,4 +1,4 @@
-import styles from "@styles/Favorites.module.scss";
+import styles from "@components/favorites/Favorites.module.scss";
 import { useContext } from "react";
 import { WishlistContext } from "context/Wishlist";
 import ProductCard from "@components/product/card/ProductCard";
