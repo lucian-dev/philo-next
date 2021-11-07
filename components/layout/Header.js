@@ -12,7 +12,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const Header = () => {
   const { cart = {} } = useSnipcart();
   const { subtotal = "0.00" } = cart;
-  const { wishlist } = useContext(WishlistContext);
+  const { favorites } = useContext(WishlistContext);
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Header = () => {
           <div>
             <Link href="/favorites">
               <a>
-                {wishlist.length > 0 ? <AiFillHeart /> : <AiOutlineHeart />}
+                {favorites.length > 0 ? <AiFillHeart /> : <AiOutlineHeart />}
               </a>
             </Link>
           </div>

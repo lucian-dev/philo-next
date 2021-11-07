@@ -1,38 +1,34 @@
-import { createContext, useReducer, useEffect } from "react";
-import { AppReducer } from "./AppReducer";
+import { createContext, useState, useEffect } from "react";
 
-const isClient = typeof window !== "undefined";
-const initialState = {
-  wishlist: (isClient && JSON.parse(localStorage.getItem("wishlist"))) || [],
-};
+export const WishlistContext = createContext();
 
-// create context
-export const WishlistContext = createContext(initialState);
-
-// provider components
 export const WishlistProvider = (props) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
-  }, [state]);
+    const favoriteItemsData = JSON.parse(localStorage.getItem("favorites"));
+    if (favoriteItemsData) {
+      setFavorites(favoriteItemsData);
+    }
+  }, []);
 
-  // actions
-  const addProductToWishlist = (product) => {
-    dispatch({ type: "ADD_PRODUCT_TO_WISHLIST", payload: product });
-  };
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
-  const removeProductFromWishlist = (id) => {
-    dispatch({ type: "REMOVE_PRODUCT_FROM_WISHLIST", payload: id });
-  };
+  function addToFavorite(newItem) {
+    setFavorites((prevItems) => [...prevItems, newItem]);
+  }
+
+  function removeFromFavorite(id) {
+    setFavorites((prevItems) =>
+      prevItems.filter((product) => product.id !== id)
+    );
+  }
 
   return (
     <WishlistContext.Provider
-      value={{
-        wishlist: state.wishlist,
-        addProductToWishlist,
-        removeProductFromWishlist,
-      }}
+      value={{ favorites, addToFavorite, removeFromFavorite }}
     >
       {props.children}
     </WishlistContext.Provider>

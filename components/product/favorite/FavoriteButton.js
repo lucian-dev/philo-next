@@ -4,16 +4,16 @@ import { WishlistContext } from "context/Wishlist";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const FavoriteButton = ({ product }) => {
-  const { addProductToWishlist, removeProductFromWishlist, wishlist } =
+  const { addToFavorite, removeFromFavorite, favorites } =
     useContext(WishlistContext);
-  let storedProduct = wishlist.find((o) => o.id === product.id);
+  let storedProduct = favorites.find((o) => o.id === product.id);
   const wishlistDisabled = storedProduct ? true : false;
   return (
     <>
       {wishlistDisabled ? (
         <button
           className={styles.favorite}
-          onClick={() => removeProductFromWishlist(product.id)}
+          onClick={() => removeFromFavorite(product.id)}
         >
           {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
         </button>
@@ -21,7 +21,7 @@ const FavoriteButton = ({ product }) => {
         <button
           className={styles.favorite}
           disabled={wishlistDisabled}
-          onClick={() => addProductToWishlist(product)}
+          onClick={() => addToFavorite(product)}
         >
           {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
         </button>
