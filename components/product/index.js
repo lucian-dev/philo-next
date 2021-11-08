@@ -9,3 +9,5 @@ export { default as ProductOptions } from "./options/ProductOptions";
 export { default as ProductQuote } from "./quote/ProductQuote";
 export { default as ProductRelated } from "./related/ProductRelated";
 export { default as ProductSocial } from "./social/ProductSocial";
+export { default as ProductReviews } from "./reviews/ProductReviews";
+export { default as ProductRating } from "./ratings/ProductRating";

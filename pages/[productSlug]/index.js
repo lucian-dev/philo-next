@@ -68,16 +68,6 @@ export default function Product({ product, categories }) {
     setProductColor(colorValue);
   }
 
-  // function addReviewHandler(reviewData) {
-  //   fetch(`http://localhost:1337/tshirts/${product.slug}/comments`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(reviewData),
-  //   });
-  // }
-
   return (
     <div className={styles.product}>
       <ProductHeader productName={product.name} />
@@ -110,8 +100,6 @@ export default function Product({ product, categories }) {
           description={product.description}
         />
         <ProductAccordion tabs={product.tabs} />
-        {/* <Reviews product={product} /> */}
-        {/* <NewReviewForm onAddReview={addReviewHandler} product={product} /> */}
       </div>
       <ProductRelated categories={categories} product={product} />
     </div>

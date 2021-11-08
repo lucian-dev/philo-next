@@ -144,6 +144,21 @@ button.btn {
       cursor: not-allowed;
     }
   }
+  &--submit-comment {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #fff;
+    background-color: var(--text-color);
+    padding: 8px 25px;
+    border: 1px solid var(--text-color);
+    &:hover {
+      background-color: transparent;
+      color: var(--text-color);
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .productsGrid {

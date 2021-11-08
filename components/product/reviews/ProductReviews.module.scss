@@ -1,0 +1,11 @@
+.reviews {
+  &__wrapper {
+    margin: 25px 0;
+  }
+  &__item {
+    margin-bottom: 15px;
+  }
+  &__comment {
+    color: var(--text-secondary-color);
+  }
+}
