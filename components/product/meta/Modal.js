@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CgArrowsShrinkH } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-const PopupSize = () => {
+const Modal = () => {
   const [popup, setPopup] = useState(false);
   return (
     <>
@@ -28,4 +28,4 @@ const PopupSize = () => {
   );
 };
 
-export default PopupSize;
+export default Modal;
