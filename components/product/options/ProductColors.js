@@ -11,9 +11,10 @@ const ProductColors = ({ product, productColor, colorChange }) => {
             <button
               key={id}
               value={color.name}
-              className={`btn btn--colors btn--colors_${color.name.toLowerCase()} ${
+              className={`btn btn--colors ${
                 colorActive ? "colorSelected" : ""
               }`}
+              style={{ backgroundColor: color.name }}
               onClick={colorChange}
             ></button>
           );
