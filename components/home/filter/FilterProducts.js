@@ -1,8 +1,8 @@
-import styles from "./FilterProducts.module.scss";
-import { useState } from "react";
-import Fuse from "fuse.js";
-import { SearchInput } from "@components/home";
-import { ProductCard } from "@components/product";
+import { useState } from 'react';
+import Fuse from 'fuse.js';
+import { SearchInput } from '@components/home';
+import { ProductCard } from '@components/product';
+import styles from './FilterProducts.module.scss';
 
 const FilterProducts = ({ products, categories }) => {
   const [activeCategory, setActiveCategory] = useState();
@@ -18,7 +18,7 @@ const FilterProducts = ({ products, categories }) => {
   }
 
   const fuse = new Fuse(activeProducts, {
-    keys: ["title", "categories.name"],
+    keys: ['title', 'categories.name'],
   });
 
   if (query) {
@@ -36,10 +36,7 @@ const FilterProducts = ({ products, categories }) => {
         <div className={styles.filterProducts__empty}></div>
         <ul>
           <li>
-            <button
-              className={`btn btn--filter ${!activeCategory && "isActive"}`}
-              onClick={() => setActiveCategory(undefined)}
-            >
+            <button className={`btn btn--filter ${!activeCategory && 'isActive'}`} onClick={() => setActiveCategory(undefined)}>
               View All
             </button>
           </li>
@@ -47,10 +44,7 @@ const FilterProducts = ({ products, categories }) => {
             const isActive = category.name === activeCategory;
             return (
               <li key={category.id}>
-                <button
-                  className={`btn btn--filter ${isActive ? "isActive" : ""}`}
-                  onClick={() => setActiveCategory(category.name)}
-                >
+                <button className={`btn btn--filter ${isActive ? 'isActive' : ''}`} onClick={() => setActiveCategory(category.name)}>
                   {category.name}
                 </button>
               </li>
@@ -58,11 +52,7 @@ const FilterProducts = ({ products, categories }) => {
           })}
         </ul>
         <div className={styles.filterProducts__search}>
-          <SearchInput
-            placeholder="Search product"
-            onChange={handleOnSearch}
-            type="search"
-          />
+          <SearchInput placeholder="Search product" onChange={handleOnSearch} type="search" />
         </div>
       </div>
       <div className="productsGrid">

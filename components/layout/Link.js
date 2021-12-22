@@ -1,12 +1,12 @@
-import styles from "./Header.module.scss";
-import Link from "next/link";
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import styles from './Header.module.scss';
 
 const ActiveLink = ({ href, children }) => {
   const router = useRouter();
 
-  let className = children.props.className || "";
+  let className = children.props.className || '';
   if (router.pathname === href) {
     className = `${styles.activeLink}`;
   }

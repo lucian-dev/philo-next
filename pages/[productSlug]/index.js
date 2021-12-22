@@ -1,6 +1,5 @@
-import styles from "@components/product/Product.module.scss";
-import { fetchQuery } from "@utils/fetcher";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { fetchQuery } from '@utils/fetcher';
 import {
   ProductHeader,
   FavoriteButton,
@@ -12,12 +11,13 @@ import {
   ProductAccordion,
   ProductQuote,
   ProductRelated,
-} from "@components/product";
+} from '@components/product';
+import styles from '@components/product/Product.module.scss';
 
 export default function Product({ product, categories }) {
   const [images, setImages] = useState([]);
   const [productSize, setProductSize] = useState();
-  const [productColor, setProductColor] = useState("Black");
+  const [productColor, setProductColor] = useState('Black');
 
   let thumbnailImage = images.slice(0, 1).map(({ original }) => original);
   let shareUrl = `http://localhost:3000/${product.slug}`;
@@ -25,7 +25,7 @@ export default function Product({ product, categories }) {
   useEffect(() => {
     let imagesBlack = [];
     let imagesWhite = [];
-    if (productColor === "Black") {
+    if (productColor === 'Black') {
       product.colors.slice(0, 1).map((item, id) => (
         <div key={id}>
           {item.gallery.map((image) => {
@@ -39,7 +39,7 @@ export default function Product({ product, categories }) {
         </div>
       ));
       setImages(imagesBlack);
-    } else if (productColor === "White") {
+    } else if (productColor === 'White') {
       product.colors.slice(1, 2).map((item, id) => (
         <div key={id}>
           {item.gallery.map((image) => {
@@ -76,29 +76,11 @@ export default function Product({ product, categories }) {
         <ProductGallery images={images} />
         <div className={styles.product__info}>
           <ProductMeta />
-          <ProductOptions
-            product={product}
-            productSize={productSize}
-            productColor={productColor}
-            sizeChange={handleSizeChange}
-            colorChange={handleColorChange}
-          />
-          <ProductActions
-            product={product}
-            thumbnailImage={thumbnailImage}
-            productSize={productSize}
-            productColor={productColor}
-          />
-          <ProductSocial
-            shareUrl={shareUrl}
-            thumbnailImage={thumbnailImage}
-            productTitle={product.name}
-          />
+          <ProductOptions product={product} productSize={productSize} productColor={productColor} sizeChange={handleSizeChange} colorChange={handleColorChange} />
+          <ProductActions product={product} thumbnailImage={thumbnailImage} productSize={productSize} productColor={productColor} />
+          <ProductSocial shareUrl={shareUrl} thumbnailImage={thumbnailImage} productTitle={product.name} />
         </div>
-        <ProductQuote
-          quote={product.headline}
-          description={product.description}
-        />
+        <ProductQuote quote={product.headline} description={product.description} />
         <ProductAccordion tabs={product.tabs} />
       </div>
       <ProductRelated categories={categories} product={product} />
@@ -107,7 +89,7 @@ export default function Product({ product, categories }) {
 }
 
 export const getStaticPaths = async () => {
-  const tshirts = await fetchQuery("tshirts");
+  const tshirts = await fetchQuery('tshirts');
 
   const paths = tshirts.map((tshirt) => ({
     params: {
@@ -122,7 +104,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const product = await fetchQuery(`tshirts/${params.productSlug}`);
-  const categories = await fetchQuery("categories");
+  const categories = await fetchQuery('categories');
 
   if (!product && !categories) {
     return {

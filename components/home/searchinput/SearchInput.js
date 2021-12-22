@@ -1,5 +1,5 @@
-import styles from "./SearchInput.module.scss";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from 'react-icons/ai';
+import styles from './SearchInput.module.scss';
 
 const SearchInput = ({ ...rest }) => {
   return (

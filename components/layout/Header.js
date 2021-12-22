@@ -1,39 +1,26 @@
-import styles from "./Header.module.scss";
-import Link from "./Link";
-import { useSnipcart } from "hooks/use-snipcart";
-import { useContext, useState, useEffect } from "react";
-import { WishlistContext } from "context/Wishlist";
-import {
-  MdOutlineAccountBalance,
-  MdOutlineAddShoppingCart,
-} from "react-icons/md";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useContext, useState, useEffect } from 'react';
+import { WishlistContext } from 'context/Wishlist';
+import { useSnipcart } from 'hooks/use-snipcart';
+import Link from './Link';
+import { MdOutlineAccountBalance, MdOutlineAddShoppingCart } from 'react-icons/md';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const { cart = {} } = useSnipcart();
-  const { subtotal = "0.00" } = cart;
+  const { subtotal = '0.00' } = cart;
   const { favorites } = useContext(WishlistContext);
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       setScroll(window.scrollY > 50);
     });
   }, []);
 
   return (
-    <header
-      className={[
-        styles.header,
-        `${scroll ? `${styles.header__sticky}` : ""}`,
-      ].join(" ")}
-    >
-      <div
-        className={[
-          styles.header__wrapper,
-          `${scroll ? `${styles.header__wrapper__sticky}` : ""}`,
-        ].join(" ")}
-      >
+    <header className={[styles.header, `${scroll ? `${styles.header__sticky}` : ''}`].join(' ')}>
+      <div className={[styles.header__wrapper, `${scroll ? `${styles.header__wrapper__sticky}` : ''}`].join(' ')}>
         <div className={styles.header__logo}>
           <Link href="/">
             <a>
@@ -60,9 +47,7 @@ const Header = () => {
         <div className={styles.header__actions}>
           <div>
             <Link href="/favorites">
-              <a>
-                {favorites.length > 0 ? <AiFillHeart /> : <AiOutlineHeart />}
-              </a>
+              <a>{favorites.length > 0 ? <AiFillHeart /> : <AiOutlineHeart />}</a>
             </Link>
           </div>
           <button className="snipcart-customer-signin btn">
@@ -70,7 +55,7 @@ const Header = () => {
           </button>
           <button className="snipcart-checkout btn">
             <MdOutlineAddShoppingCart />
-            {subtotal === 0 ? "" : <span>${subtotal}</span>}
+            {subtotal === 0 ? '' : <span>${subtotal}</span>}
           </button>
         </div>
       </div>
