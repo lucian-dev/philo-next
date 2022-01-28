@@ -1,8 +1,11 @@
-import styles from "./ProductCard.module.scss";
-import Link from "next/link";
-import FavoriteButton from "../favorite/FavoriteButton";
+import styles from './ProductCard.module.scss';
+import Link from 'next/link';
+import FavoriteButton from '../favorite/FavoriteButton';
+
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
 
 const ProductCard = ({ product }) => {
+  console.log(baseUrl);
   return (
     <div className={styles.productCard}>
       <Link href={`/${product.slug}`}>
@@ -11,12 +14,7 @@ const ProductCard = ({ product }) => {
             return (
               <div key={color.id} className={styles.productCard__image}>
                 {color.gallery.slice(0, 1).map((image) => {
-                  return (
-                    <img
-                      key={image.id}
-                      src={`http://localhost:1337${image.url}`}
-                    />
-                  );
+                  return <img key={image.id} src={`${baseUrl}${image.url}`} />;
                 })}
               </div>
             );

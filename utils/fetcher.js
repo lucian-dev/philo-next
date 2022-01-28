@@ -1,4 +1,4 @@
-const baseUrl = process.env.STRAPI_API_URL;
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
 
 async function fetchQuery(path, params = null) {
   let url;

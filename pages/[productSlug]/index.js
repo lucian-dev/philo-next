@@ -14,13 +14,15 @@ import {
 } from '@components/product';
 import styles from '@components/product/Product.module.scss';
 
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
+
 export default function Product({ product, categories }) {
   const [images, setImages] = useState([]);
   const [productSize, setProductSize] = useState();
   const [productColor, setProductColor] = useState('Black');
 
   let thumbnailImage = images.slice(0, 1).map(({ original }) => original);
-  let shareUrl = `http://localhost:3000/${product.slug}`;
+  let shareUrl = `${baseUrl}/${product.slug}`;
 
   useEffect(() => {
     let imagesBlack = [];
@@ -30,7 +32,7 @@ export default function Product({ product, categories }) {
         <div key={id}>
           {item.gallery.map((image) => {
             imagesBlack.push({
-              original: `http://localhost:1337${image.url}`,
+              original: `${baseUrl}${image.url}`,
               originalAlt: `${image.alternativeText}`,
               originalHeight: `${image.height}`,
               originalWidth: `${image.width}`,
@@ -44,7 +46,7 @@ export default function Product({ product, categories }) {
         <div key={id}>
           {item.gallery.map((image) => {
             imagesWhite.push({
-              original: `http://localhost:1337${image.url}`,
+              original: `${baseUrl}${image.url}`,
               originalAlt: `${image.alternativeText}`,
               originalHeight: `${image.height}`,
               originalWidth: `${image.width}`,
@@ -76,9 +78,24 @@ export default function Product({ product, categories }) {
         <ProductGallery images={images} />
         <div className={styles.product__info}>
           <ProductMeta />
-          <ProductOptions product={product} productSize={productSize} productColor={productColor} sizeChange={handleSizeChange} colorChange={handleColorChange} />
-          <ProductActions product={product} thumbnailImage={thumbnailImage} productSize={productSize} productColor={productColor} />
-          <ProductSocial shareUrl={shareUrl} thumbnailImage={thumbnailImage} productTitle={product.name} />
+          <ProductOptions
+            product={product}
+            productSize={productSize}
+            productColor={productColor}
+            sizeChange={handleSizeChange}
+            colorChange={handleColorChange}
+          />
+          <ProductActions
+            product={product}
+            thumbnailImage={thumbnailImage}
+            productSize={productSize}
+            productColor={productColor}
+          />
+          <ProductSocial
+            shareUrl={shareUrl}
+            thumbnailImage={thumbnailImage}
+            productTitle={product.name}
+          />
         </div>
         <ProductQuote quote={product.headline} description={product.description} />
         <ProductAccordion tabs={product.tabs} />

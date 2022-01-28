@@ -36,7 +36,10 @@ const FilterProducts = ({ products, categories }) => {
         <div className={styles.filterProducts__empty}></div>
         <ul>
           <li>
-            <button className={`btn btn--filter ${!activeCategory && 'isActive'}`} onClick={() => setActiveCategory(undefined)}>
+            <button
+              className={`btn btn--filter ${!activeCategory && 'isActive'}`}
+              onClick={() => setActiveCategory(undefined)}
+            >
               View All
             </button>
           </li>
@@ -44,7 +47,10 @@ const FilterProducts = ({ products, categories }) => {
             const isActive = category.name === activeCategory;
             return (
               <li key={category.id}>
-                <button className={`btn btn--filter ${isActive ? 'isActive' : ''}`} onClick={() => setActiveCategory(category.name)}>
+                <button
+                  className={`btn btn--filter ${isActive ? 'isActive' : ''}`}
+                  onClick={() => setActiveCategory(category.name)}
+                >
                   {category.name}
                 </button>
               </li>

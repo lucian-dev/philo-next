@@ -3,6 +3,8 @@ import { HomeHero, HomeQuote, HomeStory, FilterProducts } from '@components/home
 import styles from '@components/home/Home.module.scss';
 
 export default function Home({ products, categories, quotes }) {
+  console.log(products, categories);
+
   return (
     <div className={styles.home}>
       <HomeHero />
