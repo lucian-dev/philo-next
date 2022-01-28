@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -19,10 +19,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            async
-            src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"
-          ></script>
+          <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
           <div
             hidden
             id="snipcart"
