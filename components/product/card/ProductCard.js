@@ -5,7 +5,6 @@ import FavoriteButton from '../favorite/FavoriteButton';
 const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
 
 const ProductCard = ({ product }) => {
-  console.log(baseUrl);
   return (
     <div className={styles.productCard}>
       <Link href={`/${product.slug}`}>

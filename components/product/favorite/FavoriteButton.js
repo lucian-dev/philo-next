@@ -1,20 +1,16 @@
-import styles from "./FavoriteButton.module.scss";
-import { useContext } from "react";
-import { WishlistContext } from "context/Wishlist";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useContext } from 'react';
+import { WishlistContext } from 'context/Wishlist';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import styles from './FavoriteButton.module.scss';
 
 const FavoriteButton = ({ product }) => {
-  const { addToFavorite, removeFromFavorite, favorites } =
-    useContext(WishlistContext);
+  const { addToFavorite, removeFromFavorite, favorites } = useContext(WishlistContext);
   let storedProduct = favorites.find((o) => o.id === product.id);
   const wishlistDisabled = storedProduct ? true : false;
   return (
     <>
       {wishlistDisabled ? (
-        <button
-          className={styles.favorite}
-          onClick={() => removeFromFavorite(product.id)}
-        >
+        <button className={styles.favorite} onClick={() => removeFromFavorite(product.id)}>
           {storedProduct ? <AiFillHeart /> : <AiOutlineHeart />}
         </button>
       ) : (
