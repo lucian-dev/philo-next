@@ -2,6 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 E-Commerce Project
 
-Stack: Strapi, NextJS, Snipcart
+Stack: Strapi, NextJS, Snipcart, Heroku
 
 Work in progress!
