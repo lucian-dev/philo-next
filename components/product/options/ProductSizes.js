@@ -1,4 +1,4 @@
-import styles from "./ProductOptions.module.scss";
+import styles from './ProductOptions.module.scss';
 
 const ProductSizes = ({ product, productSize, sizeChange }) => {
   return (
@@ -11,7 +11,7 @@ const ProductSizes = ({ product, productSize, sizeChange }) => {
             <button
               key={id}
               value={size.name}
-              className={`btn btn--sizes ${sizeActive ? "sizeSelected" : ""}`}
+              className={sizeActive ? 'btn btn--sizes sizeSelected' : 'btn btn--sizes'}
               onClick={sizeChange}
             >
               {size.name}

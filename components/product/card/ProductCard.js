@@ -2,7 +2,7 @@ import styles from './ProductCard.module.scss';
 import Link from 'next/link';
 import FavoriteButton from '../favorite/FavoriteButton';
 
-const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 const ProductCard = ({ product }) => {
   return (

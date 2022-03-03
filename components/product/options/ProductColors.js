@@ -1,4 +1,4 @@
-import styles from "./ProductOptions.module.scss";
+import styles from './ProductOptions.module.scss';
 
 const ProductColors = ({ product, productColor, colorChange }) => {
   return (
@@ -11,9 +11,7 @@ const ProductColors = ({ product, productColor, colorChange }) => {
             <button
               key={id}
               value={color.name}
-              className={`btn btn--colors ${
-                colorActive ? "colorSelected" : ""
-              }`}
+              className={colorActive ? 'btn btn--colors colorSelected' : 'btn btn--colors'}
               style={{ backgroundColor: color.name }}
               onClick={colorChange}
             ></button>

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { WishlistContext } from 'context/Wishlist';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { WishlistContext } from 'context/Wishlist';
 import styles from './FavoriteButton.module.scss';
 
 const FavoriteButton = ({ product }) => {

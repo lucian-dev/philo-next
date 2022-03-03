@@ -14,7 +14,7 @@ import {
 } from '@components/product';
 import styles from '@components/product/Product.module.scss';
 
-const baseUrl = process.env.NEXT_PUBLIC_STRAPI_HEROKU_URL;
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 export default function Product({ product, categories }) {
   const [images, setImages] = useState([]);

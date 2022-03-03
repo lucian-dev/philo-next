@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from 'react';
-import { WishlistContext } from 'context/Wishlist';
-import { useSnipcart } from 'hooks/use-snipcart';
-import Link from './Link';
 import { MdOutlineAccountBalance, MdOutlineAddShoppingCart } from 'react-icons/md';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import Link from './Link';
+import { useSnipcart } from 'hooks/use-snipcart';
+import { WishlistContext } from 'context/Wishlist';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -19,8 +19,14 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={[styles.header, `${scroll ? `${styles.header__sticky}` : ''}`].join(' ')}>
-      <div className={[styles.header__wrapper, `${scroll ? `${styles.header__wrapper__sticky}` : ''}`].join(' ')}>
+    <header className={scroll ? `${styles.header} ${styles.header__sticky}` : `${styles.header}`}>
+      <div
+        className={
+          scroll
+            ? `${styles.header__wrapper} ${styles.header__wrapper__sticky}`
+            : `${styles.header__wrapper}`
+        }
+      >
         <div className={styles.header__logo}>
           <Link href="/">
             <a>
